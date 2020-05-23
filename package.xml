@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package>
+<package license="BSD-3-Clause">
     <name>Jade</name>
     <version>1.4.2</version>
     <keywords dom="dom" ajax="ajax" domevents="domevents" />
-    <homepage></homepage>
+    <homepage>https://github.com/coder102510/Jade.js/</homepage>
+    <author>Eshanth B.G.</author>
+    <main>dist/Jade.node.js</main>
+    <unpkg></unkpg>
+    <jselivr></jsdelivr>
+    <module>Jade.js</module>
 </package>
