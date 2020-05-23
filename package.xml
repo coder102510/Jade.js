@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package>
+    <name>Jade</name>
+    <version>1.4.2</version>
+    <keywords dom="dom" ajax="ajax" domevents="domevents" />
+    <homepage></homepage>
 </package>
