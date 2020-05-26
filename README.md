@@ -11,7 +11,7 @@ Currently it is only rawgit. The link is:
 ```
 Basic code in Jade.js:
 ```javascript
-$html($("h1"), "Hello")
+$html($("h1"), "Hello");
 ```
 Explanation: This code gets all the h1's and changes their html to "Hello".
 A dynamic font color style changing example:
@@ -29,4 +29,23 @@ var xhttp = new AJAXRequest("GET", "demo_file.txt", true, function() {
 }, function() {
   document.write("failure");
 });
+xhttp.finish();
 ```
+The first function is the success code and the second function is the error code.
+#
+Also, you can run slideshows like so:
+```javascript
+$slideshow(".container", 1000, function() {
+  document.write("Success!")
+});
+```
+You can also insert nodes inside of the html document:
+```javascript
+var node1 = $makeElement("p");
+var node2 = $makeElement("h1");
+$placeNode($("h1"), node1, node2);
+```
+It works like document.element.insertBefore(newnode, oldnode);
+#
+#
+# Thats it! A short introduction to Jade.js! Hope you liked it!
