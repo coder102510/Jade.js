@@ -21,3 +21,12 @@ $style($("p"), "color", function() {
 });
 ```
 Explanation: Gets all the p elements and makes their font color random.
+#
+AJAX: 
+```javascript
+var xhttp = new AJAXRequest("GET", "demo_file.txt", true, function() {
+  document.write("success!");
+}, function() {
+  document.write("failure");
+});
+```
