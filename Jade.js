@@ -1,7 +1,26 @@
-/* Jade JS library
-*  JS Library for DOM Manipulation
-*  (c) Copyright Eshanth B.G.
-*/
+var script=document.getElementsByTagName("script");  
+
+// Partly Excerpt From Stack Overflow
+
+String.prototype.charsComma = function(indexes) {
+    var returned = [];
+    for (var i = 0;i < indexes.length;i++) {
+        returned.push(this.charAt(indexes[i]));
+        var arr = returned.toString();
+        var whitespace=" ";
+        arr.replace(",",whitespace.trim())
+    }
+    return arr;
+}
+for (var i = 0;i < script.length;i++) {
+    var jadeScript=script[i].hasAttributes("Jade");
+    if (jadeScript.innerHTML===undefined) {
+        throw "Jade cannot be evaluated in this environment";
+    } else {
+        eval(jadeScript.innerHTML);
+    }
+}
+
 class $SelectAndExecute {
     constructor (elmid,event,code) {
         this.elmid=elmid;
@@ -20,7 +39,7 @@ class $SelectAndExecute {
 }
 var $=function(elm) {
     if (typeof elm==="object") {
-        return [elm];
+        return [elm]
     } else {
         return document.querySelectorAll(elm);
     }
@@ -301,7 +320,7 @@ var $includeHTML=function(cb) {
         cb();
     }
 }
-var getServerJSON=function(file,func) {
+var $getServerJSON=function(file,func) {
     var xmlhttp=new AJAXRequest("GET",file,true,function() {
         func(JSON.parse(this.responseText));
     },function() {
@@ -326,4 +345,9 @@ var $stringifyJSON=function(json,cb) {
     if (cb!==undefined) {
         cb();
     }
+}
+var $parseXML = function(xmldoc) {
+    var parser = new DOMParser();
+    var xml = parser.parseFromString(xmldoc, "text/xml")
+    return xml;
 }
