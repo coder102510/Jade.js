@@ -12,3 +12,11 @@ Basic code in Jade.js:
 ```javascript
 $html($("h1"), "Hello")
 ```
+Explanation: This code gets all the h1's and changes their html to "Hello".
+A dynamic font color style changing example:
+```javascript
+$style($("p"), "color", function() {
+  return Math.random() * 360 + 90;
+});
+```
+Explanation: Gets all the p elements and makes their font color random.
