@@ -1,4 +1,5 @@
 # Jade.js
+Warning: This js library is untested!
 #
 #
 # INTRODUCTION
