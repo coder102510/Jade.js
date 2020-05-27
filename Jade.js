@@ -1,24 +1,9 @@
-var script=document.getElementsByTagName("script");  
+var jadescript=document.querySelectorAll("script[type=\"text/jade\"]");  
 
-// Partly Excerpt From Stack Overflow
-
-String.prototype.charsComma = function(indexes) {
-    var returned = [];
-    for (var i = 0;i < indexes.length;i++) {
-        returned.push(this.charAt(indexes[i]));
-        var arr = returned.toString();
-        var whitespace=" ";
-        arr.replace(",",whitespace.trim())
-    }
-    return arr;
-}
-for (var i = 0;i < script.length;i++) {
-    var jadeScript=script[i].hasAttributes("Jade");
-    if (jadeScript.innerHTML===undefined) {
-        throw "Jade cannot be evaluated in this environment";
-    } else {
-        eval(jadeScript.innerHTML);
-    }
+if (jadescript.innerHTML=" ") {
+    throw "Nothing can be executed in this environment."
+} else {
+    addEventListener("load",jadescript.innerHTML)
 }
 
 class $SelectAndExecute {
@@ -28,8 +13,8 @@ class $SelectAndExecute {
         this.code=code;
     }
     getElmidAndEval(elmidl,eventl,codel) {
-        var elms = document.getElementById(elmidl);
-        if (elms.hasAttributes("data-power-DOM")) {
+        var elms = document.querySelectorAll(elmidl);
+        if (elms.hasAttributes("data-DOMEvent")) {
             elms.addEventListener(eventl, codel);
         }
     }
@@ -56,7 +41,7 @@ var $style=function(elm,prop,val){
     } else {
         elms=document.getElementsByTagName(elm);
     }
-    if (elms.hasAttributes("data-power-CSS")) {
+    if (elms.hasAttributes("data-CSS")) {
         if (prop==="undefined"&&val===undefined) {
             return elms.style.prop.val;
         } else if (prop===undefined) {
@@ -76,7 +61,7 @@ var $addClass=function(elm) {
     } else {
         elms=document.querySelectorAll(elm);
     }
-    if (elms.hasAttributes("data-power-Class")) {
+    if (elms.hasAttributes("data-Class")) {
         for (;currarg<arglen;currarg++) {
             elem.classList.add(args[currarg]);
         }
@@ -90,7 +75,7 @@ var $removeClass=function(elm) {
     } else {
         elms=document.querySelectorAll(elm);
     }
-    if (element.hasAttributes("data-power-Class")) {
+    if (element.hasAttributes("data-Class")) {
         for (;currarg<arglen;currarg++) {
             elms.classList.remove(arg[currarg]);
         }
@@ -107,7 +92,7 @@ var $toggleClass=function(elm) {
     var next=curr+1;
     var prev=curr-1;
     var args=arguments,arglen=arguments.length; 
-    if (elms.hasAttributes("data-power-Class")) {
+    if (elms.hasAttributes("data-Class")) {
         for (;curr < arglen; curr++) {
             if (element.classList.contains(args[curr])) {
                 if (curr==arglen) {
@@ -286,33 +271,12 @@ $.ajax=function(url,options) {
         throw new Error("Your AJAX Request Does Not Have the Correct Properties.")
     }
 }
-var $includeHTML=function(cb) {
-    var tags,i,l,xhttp,elm,file;
+$.load=function(cb) {
+    var i,elm,tags,file;
     tags=document.getElementsByTagName("*");
-    l=tags.length;
-    for (i=0;i<l;i++) {
-        elm=z[i];
-        file=elm.getAttribute("data-power-include-HTML");
-        if (file) {
-            xhttp=new XMLHttpRequest();
-            xhttp.onreadystatechange=function() {
-                if (this.readyState==4) {
-                    if (this.status==200) {
-                        elm.innerHTML=this.responseText;
-                    } else if (this.status==404) {
-                        elm.innerHTML="404: Page not found.";
-                    }
-                    elm.removeAttribute("data-power-include-HTML");
-                    includeHTML(cb);
-                }
-            }
-            xhttp.open("GET",file,true);
-            xhttp.send();
-            return;
-        }
-    }
-    if (cb) {
-        cb();
+    for (i in tags) {
+        elm=tags[i];
+        file=elm.getAttribute("data-includeHTML")
     }
 }
 var $checkForErrors=function(code) {
@@ -323,16 +287,18 @@ var $checkForErrors=function(code) {
     }
 }
 var $parseJSON=function(json,parsefunc,cb) {
-    JSON.parse(json,parsefunc);
+    var pjson=JSON.parse(json,parsefunc);
     if (cb!==undefined) {
         cb();
     }
+    return pjson
 }
 var $stringifyJSON=function(json,cb) {
-    JSON.stringify(json);
+    var sjson=JSON.stringify(json);
     if (cb!==undefined) {
         cb();
     }
+    return sjson;
 }
 var $parseXML=function(xmldoc) {
     var parser = new DOMParser();
