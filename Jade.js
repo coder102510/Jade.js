@@ -315,15 +315,6 @@ var $includeHTML=function(cb) {
         cb();
     }
 }
-var $getServerJSON=function(file,func) {
-    $.ajax({
-        url:file,
-        method:"GET",
-        async:true,
-        onReady:func(JSON.parse(this.responseText))
-        onError:func(console.warn("JSON parsing error or AJAX failure"))
-    });
-}
 var $checkForErrors=function(code) {
     try {
         code();
