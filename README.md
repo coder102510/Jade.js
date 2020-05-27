@@ -40,9 +40,7 @@ The first function is the success code and the second function is the error code
 #
 Also, you can run slideshows like so:
 ```javascript
-$slideshow(".container", 1000, function() {
-  document.write("Success!")
-});
+$slideshow(".container", 1000);
 ```
 You can also insert nodes inside of the html document:
 ```javascript
@@ -51,6 +49,22 @@ var node2 = $makeElement("h1");
 $placeNode($("h1"), node1, node2);
 ```
 It works like document.element.insertBefore(newnode, oldnode);
+#
+With Jade.js, you can parse or stringify JSON:
+```javascript
+$parseJSON({"name":"Danny"}, function(key, value) {
+  if (key === "name") {
+    document.write(value)
+  }
+}, function() {
+  console.log("JSON PARSED")
+})
+$stringifyJSON({"JSON":"JSON"}, function() {
+  console.log("JSON Stringified!")
+})
+$parseXML("<xml></xml>")
+```
+Explanation: The first function is the key:value function and the second function is the callback for $parseJSON. For $stringifyJSON, the function is the callback. For all three, the first parameter is the thing to be parsed or stringified.
 #
 #
 # Thats it! A short introduction to Jade.js! Hope you liked it!
