@@ -37,7 +37,7 @@ class $SelectAndExecute {
         getElmidAndEval(this.elmid, this.event, this.code);
     }
 }
-var $=function(elm) {
+function $(elm) {
     if (typeof elm==="object") {
         return [elm]
     } else {
@@ -259,36 +259,31 @@ var $empty=function(elm) {
         }
     }
 }
-class $AJAXRequest {
-    constructor(method,file,async,readycode,errorcode,data=undefined) {
-        this.method=method;
-        this.file=file;
-        this.async=async;
-        this.data=data;
-        this.readycode=readycode;
-        this.errorcode=errorcode;
+var $={};
+$.ajax=function(url,options) {
+    if (typeof url==="object") {
+        options=url;
+        url=undefined;
     }
-    finish() {
-        if (document.body.hasAttributes("data-power-AJAX")) {
-            var xhttp;
-            if (data===undefined) {
-                this.method="GET";
-            }
-            if (window.XMLHttpRequest) {
-                xhttp=new XMLHttpRequest();
-            } if (window.ActiveXObject) {
-                xhttp=new ActiveXObject("Microsoft.XMLHttp");
-            }
-            xhttp.onreadystatechange = function() {
-                if (this.status===200&&this.readystate===4) {
-                    addEventListener("load",this.readycode);
-                } else {
-                    addEventListener("load",this.errorcode)
-                }
-            }
-           xhttp.open(this.method,this.file,this.async);
-           xhttp.send(this.data);
+    options=options||{};
+    if (options.hasOwnProperty("url")&&options.hasOwnProperty("method")&&options.hasOwnProperty("async")&&options.hasOwnProperty("onReady")&&options.hasOwnProperties("onError")&&options.hasOwnProperty("data")) {
+        var xhttp;
+        if (window.XMLHttpRequest) {
+            xhttp=new XMLHttpRequest();
+        } else {
+            xhttp=new ActiveXObject("Microsoft.XMLHttp");
         }
+        xhttp.onreadystatechange=function() {
+            if (this.readyState==4&&this.status==200) {
+                options.onReady();
+            } else {
+                options.onError();
+            }
+        }
+        xhttp.open(options.method,options.url,options.async);
+        xhttp.send(options.data);
+    } else {
+        throw new Error("Your AJAX Request Does Not Have the Correct Properties.")
     }
 }
 var $includeHTML=function(cb) {
@@ -321,10 +316,12 @@ var $includeHTML=function(cb) {
     }
 }
 var $getServerJSON=function(file,func) {
-    var xmlhttp=new AJAXRequest("GET",file,true,function() {
-        func(JSON.parse(this.responseText));
-    },function() {
-        func(console.error("JSON not able to be parsed"));
+    $.ajax({
+        url:file,
+        method:"GET",
+        async:true,
+        onReady:func(JSON.parse(this.responseText))
+        onError:func(console.warn("JSON parsing error or AJAX failure"))
     });
 }
 var $checkForErrors=function(code) {
@@ -346,7 +343,7 @@ var $stringifyJSON=function(json,cb) {
         cb();
     }
 }
-var $parseXML = function(xmldoc) {
+var $parseXML=function(xmldoc) {
     var parser = new DOMParser();
     var xml = parser.parseFromString(xmldoc, "text/xml")
     return xml;
