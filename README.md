@@ -58,17 +58,19 @@ It works like document.element.insertBefore(newnode, oldnode);
 #
 With Jade.js, you can parse or stringify JSON:
 ```javascript
-$parseJSON({"name":"Danny"}, function(key, value) {
+$parseJSON({"name":"Danny"}, (key, value) => {
   if (key === "name") {
     document.write(value)
   }
-}, function() {
+}, () => {
   console.log("JSON PARSED")
 })
-$stringifyJSON({"JSON":"JSON"}, function() {
+$stringifyJSON({"JSON":"JSON"}, () => {
   console.log("JSON Stringified!")
 })
-$parseXML("<xml></xml>")
+$parseXML("<xml></xml>", () => {
+  console.log("XML PARSED!")
+});
 ```
 Explanation: The first function is the key:value function and the second function is the callback for $parseJSON. For $stringifyJSON, the function is the callback. For all three, the first parameter is the thing to be parsed or stringified.
 #
