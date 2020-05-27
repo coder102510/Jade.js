@@ -22,6 +22,13 @@ $style($("p"), "color", function() {
 ```
 Explanation: Gets all the p elements and makes their font color random.
 #
+To create DOM events, use this syntax:
+```javascript
+var sel = new SelectAndExecute("#elmid", "click", function() {
+  document.write("Clicked!")
+})
+```
+#
 AJAX: 
 ```javascript
 $.ajax({
