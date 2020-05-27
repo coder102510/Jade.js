@@ -24,14 +24,19 @@ Explanation: Gets all the p elements and makes their font color random.
 #
 AJAX: 
 ```javascript
-var xhttp = new AJAXRequest("GET", "demo_file.txt", true, function() {
-  document.write("success!");
-}, function() {
-  document.write("failure");
-});
-xhttp.finish();
+$.ajax({
+  url:"demo_file.txt",
+  method:"get",
+  async:true,
+  onReady:() => {
+    document.write("AJAX IS READY!")
+  },
+  onError:() => {
+    document.write("AJAX HAS FAILED!")
+  }
+})
 ```
-The first function is the success code and the second function is the error code.
+The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}); 
 #
 Also, you can run slideshows like so:
 ```javascript
