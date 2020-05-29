@@ -18,9 +18,20 @@ import "Jade" from "Jade.js";
 ```
 Basic code in Jade.js:
 ```javascript
-$html($("h1"), "Hello");
+//query selector
+var h1 = $("h1 > h1");
+$html(h1, "Hello");
+//id selector
+var h1 = $d("h1");
+$html(h1, "Hello");
+//class selector
+var h1 = $c(".h1");
+$html(h1, "Hello");
+//tag selector
+var h1 = $t("h1");
+$html(h1, "Hello");
 ```
-Explanation: This code gets all the h1's and changes their html to "Hello". Or you can do this which adds "Hello World" to each h1 tag:
+Explanation: Replaces html of element based on selector to 2nd parameter. The next example adds html to the selected element: 
 ```javascript
 $renderHTML("Hello World!", $("h1"))
 ```
@@ -28,7 +39,7 @@ A dynamic font color style changing example:
 ```javascript
 $style($("p"), "color", () => Math.random() * 360 + 90);
 ```
-Explanation: Gets all the p elements and makes their font color random.
+Explanation: Gets all the p elements and makes their font color random * 360 + 90 (done by the arrow function in the 3rd parameter).
 #
 To create DOM events, use this syntax:
 ```javascript
