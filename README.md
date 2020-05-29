@@ -125,5 +125,22 @@ document.write(pjson + "<br>" + sjson + "<br>" + pxml);
 ```
 Explanation: The first function is the key:value function and the second function is the callback for $parseJSON. For $stringifyJSON, the function is the callback. For all three, the first parameter is the thing to be parsed or stringified.
 #
-#
-# Thats it! A short introduction to Jade.js! Hope you liked it!
+# Jade.js Website Example
+```html
+<!doctype html>
+<html>
+  <body>
+    <script>
+      import "Jade" from "Jade.js";
+      var body = $("body");
+      var event = new SelectAndExexcute(body, "click", () => {
+        $renderHTML("<h1>Jadejs.org</h1>", body);
+        $style(body, "font-size", function() {
+          return Math.random * 360 + 90 + "%";
+        });
+      })
+    </script>
+  </body>
+</html>
+```
+# That's it! A short introduction to Jade.js! Hope you liked it!
