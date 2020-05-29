@@ -1,0 +1,7 @@
+{
+    package: {
+        "name":"Jade.js"
+        "main":"Jade.js"
+        "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+    }
+}
