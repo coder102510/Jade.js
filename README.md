@@ -34,6 +34,23 @@ var sel = new SelectAndExecute("#elmid", "click", () => {
 });
 sel.finish();
 ```
+To add multiple events to the same element, use this syntax:
+```javascript
+var sel = new SelectAndExecute("#id", {
+  events: [
+    "click",
+    "mouseover"
+  ], 
+  functions: [
+    function() {
+      document.write("Clicked!");
+    }, 
+    function() {
+      document.write("Mouseover!")
+    }
+  ]
+})
+```
 #
 AJAX: 
 ```javascript
