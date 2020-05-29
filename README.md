@@ -84,6 +84,7 @@ The first function is the success code and the second function is the error code
 </body>
 </html>
 ```
+This method "loads" an HTML document add adds its content to your HTML page, starting with where you include the attribute "data-includeHTML". The attribute "data-includeHTML" has to have a value that ends with ".html",".xhtml",etc.
 #
 Also, you can run slideshows like so:
 ```javascript
