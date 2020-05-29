@@ -2,7 +2,7 @@
 Warning: This js library is untested!
 #
 #
-# INTRODUCTION
+# INTRODUCTION TO JADE.JS
 Jade.js is a JS library meant to modify the DOM.
 Currently it is only rawgit. The link is:
 ```html
