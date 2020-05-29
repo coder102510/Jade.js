@@ -48,7 +48,8 @@ var sel = new SelectAndExecute("#id", {
       document.write("Mouseover!")
     }
   ]
-})
+});
+sel.finish();
 ```
 #
 AJAX: 
