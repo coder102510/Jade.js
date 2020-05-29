@@ -298,8 +298,12 @@ for (;i<l;i++) {
         }
         var $={};
         $.ajax=async function(url,options=undefined) {
-            if (typeof options==="object") {return await fetch(url,options)}
-            else {options=options||{}}
+            if (options===undefined) {
+                console.warn("Securities cannot be enabled if options is not defined.")
+            } else {
+                options=options||{};
+            }
+            return await fetch(url,options)
         }
         var xhttp,ajax={};
         ajax.ajax=function(url, options) {
