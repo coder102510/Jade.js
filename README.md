@@ -55,7 +55,7 @@ AJAX:
 ```javascript
 $.ajax("demofile.txt", {
   credidentials:"include"
-}).then(fetch response code).then(use result).catch(error code);
+}).then((res) => response.json()).then(()).catch(error code);
 ```
 This is simillar to the Fetch API, in fact, it shares all the properties of the fetch api! You could also do it like this:
 ```javascript
