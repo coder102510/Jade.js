@@ -1,5 +1,5 @@
 # Jade.js
-Warning: Minified version is not going to be updated any more. Also, this js library is untested.
+Warning: Minified version is not going to be updated any more and is hard to understand and use. Also, this js library is untested.
 #
 #
 # INTRODUCTION TO JADE.JS
@@ -149,6 +149,7 @@ $checkForErrors(() => {
 <!doctype html>
 <html>
   <body>
+    <script src = "https://raw.githubusercontent.com/coder102510/Jade.js/master/Jade.js"></script>
     <script>
       import "Jade" from "Jade.js";
       $checkForErrors(() => {
