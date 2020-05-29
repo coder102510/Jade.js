@@ -292,6 +292,29 @@ for (;i<l;i++) {
             if (typeof options==="object") {return await fetch(url,options)}
             else {options=options||{}}
         }
+        ajax.ajax=function(url, options) {
+          if (typeof url==="object") {
+            options=url;
+            url=undefined;
+          }
+          options=options||{};
+          if (options.hasOwnProperty("url")&&options.hasOwnProperty("method")&&options.hasOwnProperty("async")&&options.hasOwnProperty("data")&&options.hasOwnProperty("onReady")&&options.hasOwnProperty("onError")) {
+            xhttp=new XMLHttpRequest();
+            if (window.ActiveXObject) {xhttp=new ActiveXObject("Microsoft.XMLHTTP")}
+            xhttp.onreadystatechange=function() {
+                if (this.readyState===4&&this.status===200) {
+                    options.onReady();
+                } else {
+                    options.onError();
+                }
+                if (options.hasOwnProperty("script")) {
+                    this.responseText();
+                }
+            }
+            xhttp.open(options.method,options.url,options.async);
+            xhttp.send(options.data);
+          }
+        }
         $.load=function(cb) {
             var i,elm,tags,file,xmlhttp;
             tags=document.getElementsByTagName("*");
