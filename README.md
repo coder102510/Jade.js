@@ -17,7 +17,10 @@ Basic code in Jade.js:
 ```javascript
 $html($("h1"), "Hello");
 ```
-Explanation: This code gets all the h1's and changes their html to "Hello".
+Explanation: This code gets all the h1's and changes their html to "Hello". Or you can do this which adds "Hello World" to each h1 tag:
+```javascript
+$renderHTML("Hello World!", $("h1"))
+```
 A dynamic font color style changing example:
 ```javascript
 $style($("p"), "color", () => Math.random() * 360 + 90);
