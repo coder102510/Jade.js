@@ -9,6 +9,10 @@ Currently it is only rawgit. The link is:
 ```html
 <script src = "https://raw.githubusercontent.com/coder102510/Jade.js/master/Jade.js"></script>
 ```
+First do the import (websites):
+```javascript
+import "Jade" from "Jade.js"
+```
 Basic code in Jade.js:
 ```javascript
 $html($("h1"), "Hello");
