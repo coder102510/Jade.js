@@ -314,14 +314,14 @@ for (;i<l;i++) {
                             this.responseText()
                         } else if (options.fileType==="xml") {
                             var domparser=new DOMParser();
-                            domparser.parseFromString(this.responseXML,"text/xml")
+                            this.responseText=domparser.parseFromString(this.responseXML,"text/xml")
                         }
                     } 
                 }
                 xhttp.open(options.method,options.url,options.async);
                 xhttp.send(options.data);
             } else {
-                throw new Error("Your AJAX Request Does Not Have the Correct Properties.")
+                throw "Your AJAX Request Does Not Have the Correct Properties.";
             }
         }
         $.load=function(cb) {
@@ -374,6 +374,6 @@ for (;i<l;i++) {
             return xml;
         }
     } else {
-        throw "You first need to import the Jadejs library."
+        throw "You first need to import the Jade.js library."
     }
 }
