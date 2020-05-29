@@ -48,10 +48,19 @@ for (;i<l;i++) {
         }
         function $(elm) {
             if (typeof elm==="object") {
-                return [elm]
+                return [elm];
             } else {
                 return document.querySelectorAll(elm);
             }
+        }
+        function $d(elm) {
+            $("#"+elm);
+        }
+        function $c(elm) {
+            $("."+elm);
+        }
+        function $t(elm) {
+            $(""+elm)
         }
         var $makeElement=function(elm) {
             var newelm;
@@ -226,7 +235,7 @@ for (;i<l;i++) {
         }
         var $renderHTML=function(html,elm) {
             var elem;
-            if (typeof elm=="function") {elem=elm();}
+            if (typeof elm="function") {elem=elm();}
             else {elem=document.querySelectorAll(elm);}
             if (typeof html==="string") {
                 elem.innerHTML+=html;
@@ -292,6 +301,7 @@ for (;i<l;i++) {
             if (typeof options==="object") {return await fetch(url,options)}
             else {options=options||{}}
         }
+        var xhttp,ajax={};
         ajax.ajax=function(url, options) {
           if (typeof url==="object") {
             options=url;
