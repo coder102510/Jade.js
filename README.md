@@ -4,7 +4,6 @@ Warning: This js library is untested!
 #
 # INTRODUCTION
 Jade.js is a JS library meant to modify the DOM.
-If you like, you could use the jade custom attribute for scripts with jade.js 
 Currently it is only rawgit. The link is:
 ```html
 <script src = "https://raw.githubusercontent.com/coder102510/Jade.js/master/Jade.js"></script>
@@ -54,16 +53,22 @@ var sel = new SelectAndExecute("#id", {
 #
 AJAX: 
 ```javascript
-$.ajax({
-  url:"demo_file.txt",
-  method:"GET",
+$.ajax("demofile.txt", {
+  credidentials:"include"
+}).then(fetch response code).then(use result).catch(error code);
+```
+This is simillar to the Fetch API, in fact, it shares all the properties of the fetch api! You could also do it like this:
+```javascript
+ajax.ajax({
+  url:"demofile.txt",
+  method:"get",
   async:true,
-  data: ""
-  onReady:() => {
-    document.write("AJAX IS READY!")
+  data:"",
+  onReady:function() {
+    code
   },
-  onError:() => {
-    document.write("AJAX HAS FAILED!")
+  onError:function() {
+    code
   }
 })
 ```
