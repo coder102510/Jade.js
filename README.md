@@ -90,7 +90,7 @@ ajax.ajax({
   }
 })
 ```
-The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}). Also, to access the XMLHttpRequest properties, you use the variable ```javascript xhttp```.
+The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}). Also, to access the XMLHttpRequest properties, you use the variable ```xhttp```.
 Another AJAX method is this:
 ```html
 <html>
