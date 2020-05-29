@@ -55,9 +55,9 @@ AJAX:
 ```javascript
 $.ajax("demofile.txt", {
   credidentials:"include"
-}).then((res) => response.json()).then(()).catch(error code);
+}).then((res) => response.json()).then((res) => document.write(res.exampleobject.name)).catch(() => console.log());
 ```
-This is simillar to the Fetch API, in fact, it shares all the properties of the fetch api! You could also do it like this:
+This is simillar to the Fetch API, in fact, the function $.ajax returns a fetch request! Here is another AJAX example:
 ```javascript
 ajax.ajax({
   url:"demofile.txt",
@@ -72,7 +72,18 @@ ajax.ajax({
   }
 })
 ```
-The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}); 
+The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}). Another AJAX method is this:
+```html
+<html>
+<body data-includeHTML="demohtmlfile.html">
+<script>
+  $.load(function() {
+    document.write("Loaded!");
+  });
+</script>
+</body>
+</html>
+```
 #
 Also, you can run slideshows like so:
 ```javascript
