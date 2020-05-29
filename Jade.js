@@ -14,7 +14,7 @@ String.prototype.selectChars=function(indexes) {
 }
 //end exerpt from stack overflow
 for (;i<l;i++) {
-    if (scripts[i].innerHTML.selectChars([0,26])==="import \"Jade\" from \"Jade.js\"") { 
+    if (scripts[i].innerHTML.selectChars([0,26])==="import \"Jade\" from \"Jade.js\";") { 
         class $SelectAndExecute {
             constructor (elmid,event,code) {
                 this.elmid=elmid;
