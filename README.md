@@ -56,8 +56,9 @@ AJAX:
 ```javascript
 $.ajax({
   url:"demo_file.txt",
-  method:"get",
+  method:"GET",
   async:true,
+  data: ""
   onReady:() => {
     document.write("AJAX IS READY!")
   },
@@ -80,21 +81,22 @@ $placeNode($("h1"), node1, node2);
 ```
 It works like document.element.insertBefore(newnode, oldnode);
 #
-With Jade.js, you can parse or stringify JSON:
+With Jade.js, you can parse or stringify JSON and parse XML:
 ```javascript
-$parseJSON({"name":"Danny"}, (key, value) => {
+var pjson = $parseJSON({"name":"Danny"}, (key, value) => {
   if (key === "name") {
     document.write(value)
   }
 }, () => {
   console.log("JSON PARSED")
-})
-$stringifyJSON({"JSON":"JSON"}, () => {
+});
+var sjson = $stringifyJSON({"JSON":"JSON"}, () => {
   console.log("JSON Stringified!")
 })
-$parseXML("<xml></xml>", () => {
+var pxml = $parseXML("<xml></xml>", () => {
   console.log("XML PARSED!")
 });
+document.write(pjson + "<br>" + sjson + "<br>" + pxml)
 ```
 Explanation: The first function is the key:value function and the second function is the callback for $parseJSON. For $stringifyJSON, the function is the callback. For all three, the first parameter is the thing to be parsed or stringified.
 #
