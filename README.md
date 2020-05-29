@@ -1,5 +1,5 @@
 # Jade.js
-Warnings: This js library is untested! Also, avoid the minified version! If you use the minified version, you will need to research through the code. Update: Minified version is no longer being updated.
+Warning: Minified version is not going to be updated any more. Also, this js library is untested.
 #
 #
 # INTRODUCTION TO JADE.JS
@@ -135,6 +135,14 @@ var pxml = $parseXML("<xml></xml>", () => {
 document.write(pjson + "<br>" + sjson + "<br>" + pxml);
 ```
 Explanation: The first function is the key:value function and the second function is the callback for $parseJSON. For $stringifyJSON, the function is the callback. For all three, the first parameter is the thing to be parsed or stringified.
+#
+Error handling:
+```javascript
+$checkForErrors(() => {
+  doocument.write("Checking For Errors!")
+  //expected output in console: "Uncaught "doocument" is not defined"
+});
+```
 #
 # Jade.js Website Example
 ```html
