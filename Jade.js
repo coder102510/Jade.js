@@ -226,7 +226,7 @@ for (;i<l;i++) {
         }
         var $renderHTML=function(html,elm) {
             var elem;
-            if (typeof elm="function") {elem=elm();}
+            if (typeof elm=="function") {elem=elm();}
             else {elem=document.querySelectorAll(elm);}
             if (typeof html==="string") {
                 elem.innerHTML+=html;
@@ -288,44 +288,12 @@ for (;i<l;i++) {
             }
         }
         var $={};
-        var xhttp;
-        $.ajax=function(url,options) {
-            if (typeof url==="object") {
-                options=url;
-                url=undefined;
-            }
-            options=options||{};
-            if (options.hasOwnProperty("url")&&options.hasOwnProperty("method")&&options.hasOwnProperty("async")&&options.hasOwnProperty("onReady")&&options.hasOwnProperties("onError")&&options.hasOwnProperty("data")) {
-                if (window.XMLHttpRequest) {
-                    xhttp=new XMLHttpRequest();
-                } else {
-                    xhttp=new ActiveXObject("Microsoft.XMLHttp");
-                }
-                xhttp.onreadystatechange=function() {
-                    if (this.readyState==4&&this.status==200) {
-                        options.onReady();
-                    } else {
-                        options.onError();
-                    }
-                    if (options.hasOwnProperty("fileType")) {
-                        if (options.fileType==="json") {
-                            JSON.parse(this.responseText);
-                        } else if (options.fileType==="script") {
-                            this.responseText()
-                        } else if (options.fileType==="xml") {
-                            var domparser=new DOMParser();
-                            this.responseText=domparser.parseFromString(this.responseXML,"text/xml")
-                        }
-                    } 
-                }
-                xhttp.open(options.method,options.url,options.async);
-                xhttp.send(options.data);
-            } else {
-                throw "Your AJAX Request Does Not Have the Correct Properties.";
-            }
+        $.ajax=async function(url,options=undefined) {
+            if (typeof options==="object") {return await fetch(url,options)}
+            else {options=options||{}}
         }
         $.load=function(cb) {
-            var i,elm,tags,file,xhttp;
+            var i,elm,tags,file,xmlhttp;
             tags=document.getElementsByTagName("*");
             for (i in tags) {
                 elm=tags[i];
@@ -374,6 +342,6 @@ for (;i<l;i++) {
             return xml;
         }
     } else {
-        throw "You first need to import the Jade.js library."
+        throw "You first need to import the Jadejs library."
     }
 }
