@@ -151,13 +151,15 @@ $checkForErrors(() => {
   <body>
     <script>
       import "Jade" from "Jade.js";
-      var body = $("body");
-      var event = new SelectAndExexcute(body, "click", () => {
-        $renderHTML("<h1>Jadejs.org</h1>", body);
-        $style(body, "font-size", function() {
-          return Math.random * 360 + 90 + "%";
+      $checkForErrors(() => {
+        var body = $("body");
+        var event = new SelectAndExexcute(body, "click", () => {
+          $renderHTML("<h1>Jadejs.org</h1>", body);
+          $style(body, "font-size", function() {
+            return Math.random * 360 + 90 + "%";
+          });
         });
-      })
+      });
     </script>
   </body>
 </html>
