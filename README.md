@@ -60,7 +60,7 @@ $.ajax("demofile.txt", {
 .then((res) => document.write(res.exampleobject.name))
 .catch(() => console.log());
 ```
-This is simillar to the Fetch API, in fact, the function $.ajax returns a fetch request! Here is another AJAX example:
+This is simillar to the Fetch API, in fact, the function $.ajax returns a fetch request! Here is another AJAX example if you are not familliar with the fetch api:
 ```javascript
 ajax.ajax({
   url:"demofile.txt",
