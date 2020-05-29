@@ -1,12 +1,16 @@
 # Jade.js
-Warning: This js library is untested!
+Warnings: This js library is untested! Also, avoid the minified version! If you use the minified version, you will need to research through the code.
 #
 #
 # INTRODUCTION TO JADE.JS
 Jade.js is a JS library meant to modify the DOM.
-Currently it is only rawgit. The link is:
+Currently it is only at rawgit. The link is:
 ```html
 <script src = "https://raw.githubusercontent.com/coder102510/Jade.js/master/Jade.js"></script>
+```
+For minified version:
+```html
+<script src = "https://raw.githubusercontent.com/coder102510/Jade.js/master/Jade.min.js"></script>
 ```
 First do the import (websites):
 ```javascript
