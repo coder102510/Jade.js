@@ -55,7 +55,9 @@ AJAX:
 ```javascript
 $.ajax("demofile.txt", {
   credidentials:"include"
-}).then((res) => response.json()).then((res) => document.write(res.exampleobject.name)).catch(() => console.log());
+}).then((res) => response.json())
+.then((res) => document.write(res.exampleobject.name))
+.catch(() => console.log());
 ```
 This is simillar to the Fetch API, in fact, the function $.ajax returns a fetch request! Here is another AJAX example:
 ```javascript
