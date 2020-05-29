@@ -10,7 +10,7 @@ Currently it is only rawgit. The link is:
 ```
 First do the import (websites):
 ```javascript
-import "Jade" from "Jade.js"
+import "Jade" from "Jade.js";
 ```
 Basic code in Jade.js:
 ```javascript
@@ -67,14 +67,15 @@ ajax.ajax({
   async:true,
   data:"",
   onReady:function() {
-    code
+    document.write(xhttp.responseText);
   },
   onError:function() {
-    code
+    document.write("AJAX not loading.");
   }
 })
 ```
-The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}). Another AJAX method is this:
+The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}). Also, to access the XMLHttpRequest properties, you use the variable xhttp.
+Another AJAX method is this:
 ```html
 <html>
 <body data-includeHTML="demohtmlfile.html">
@@ -107,15 +108,15 @@ var pjson = $parseJSON({"name":"Danny"}, (key, value) => {
     document.write(value)
   }
 }, () => {
-  console.log("JSON PARSED")
+  console.log("JSON PARSED");
 });
 var sjson = $stringifyJSON({"JSON":"JSON"}, () => {
-  console.log("JSON Stringified!")
+  console.log("JSON Stringified!");
 })
 var pxml = $parseXML("<xml></xml>", () => {
-  console.log("XML PARSED!")
+  console.log("XML PARSED!");
 });
-document.write(pjson + "<br>" + sjson + "<br>" + pxml)
+document.write(pjson + "<br>" + sjson + "<br>" + pxml);
 ```
 Explanation: The first function is the key:value function and the second function is the callback for $parseJSON. For $stringifyJSON, the function is the callback. For all three, the first parameter is the thing to be parsed or stringified.
 #
