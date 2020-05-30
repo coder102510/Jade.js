@@ -281,7 +281,7 @@ for (;i<l;i++) {
             } else {
                 elms=document.querySelectorAll(elm);
             }
-            document.getElementById("#append").appendChild(newnode);
+            document.body.appendChild(newnode);
         }
         var $empty=function(elm) {
             var elms;
