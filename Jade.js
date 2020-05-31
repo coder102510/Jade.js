@@ -235,7 +235,7 @@ for (;i<l;i++) {
         }
         var $renderHTML=function(html,elm) {
             var elem;
-            if (typeof elm="function") {elem=elm();}
+            if (typeof elm=="function") {elem=elm();}
             else {elem=document.querySelectorAll(elm);}
             if (typeof html==="string") {
                 elem.innerHTML+=html;
@@ -304,7 +304,7 @@ for (;i<l;i++) {
             if (window.XMLHttpRequest) { return new XMLHttpRequest() }
             else { return new ActiveXObject("Microsoft.XMLHTTP") }
         }, xhttp;
-        async function fetchFile(url,options) => {
+        async function fetchFile(url,options) {
             options=options||{};
             var prom=await ajaxInit(function() {
                 xhttp = xml();
