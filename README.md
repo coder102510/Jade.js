@@ -185,4 +185,4 @@ $checkForErrors(() => {
   </body>
 </html>
 ```
-To learn more, go to the *[JadeJS Reference](https://github.com/coder102510/Jade.js/wiki/Reference)
+To learn more, go to the [JadeJS Reference](https://github.com/coder102510/Jade.js/wiki/Reference)
