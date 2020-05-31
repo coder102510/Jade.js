@@ -43,14 +43,14 @@ Explanation: Gets all the p elements and makes their font color random * 360 + 9
 #
 To create DOM events, use this syntax:
 ```javascript
-var sel = new SelectAndExecute("#elmid", "click", () => {
+var sel = new $SelectAndExecute("#elmid", "click", () => {
   document.write("Clicked!")
 });
 sel.finish();
 ```
 To add multiple events to the same element, use this syntax:
 ```javascript
-var sel = new SelectAndExecute("#id", {
+var sel = new $SelectAndExecute("#id", {
   events: [
     "click",
     "mouseover"
@@ -155,7 +155,7 @@ $checkForErrors(() => {
       import "Jade" from "Jade.js";
       $checkForErrors(() => {
         var body = $("body");
-        var event = new SelectAndExexcute(body, "load", () => {
+        var event = new $SelectAndExexcute(body, "load", () => {
           $renderHTML("<h1>Jade.JS</h1>", body);
           $style(body, "font-size", function() {
             return Math.random * 360 + 90 + "%";
@@ -163,7 +163,7 @@ $checkForErrors(() => {
           var h2 = $makeElement("h2");
           $renderHTML("A JS Library to modify the DOM.", h2);
           appendNode(h2);
-          var h2event = new SelectAndExecute(h2, {
+          var h2event = new $SelectAndExecute(h2, {
             events: [
               "click",
               "mouseover"
