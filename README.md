@@ -173,7 +173,7 @@ $checkForErrors(() => {
               },
               () => {
                 var p = $makeElement("p");
-                $renderHTML("Jade JS is a JS library meant to modify the DOM, along with other features. <br> It can do: AJAX,                 JSON/XML parsing and stringifying, and more!");
+                $renderHTML("Jade JS is a JS library meant to modify the DOM, along with other features. <br> It can do: AJAX, JSON/XML parsing and stringifying, and more!");
               }
             ]
           });
