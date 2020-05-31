@@ -71,7 +71,8 @@ AJAX:
 ```javascript
 fetchFile("demofile.txt", {
   method:"get",
-  async:true
+  async:true,
+  data:" "
 }).then(() => { document.write("Success!") })
 .catch(() => { document.write("Failure!") });
 ```
