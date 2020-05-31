@@ -343,13 +343,13 @@ for (;i<l;i++) {
                 if (options.hasOwnProperty("script")) {
                     this.responseText();
                 }
+                if (options.hasOwnProperty("setCSP")) {
+                    var meta=document.createElement("meta");
+                    meta.setAttribute("http-equiv","Content-Security-Policy");
+                    meta.setAttribute("content",options.setCSP);
+                    document.head.appendChild(meta);
+                }  
             }
-            if (options.hasOwnProperty("setCSP")) {
-                var meta=document.createElement("meta");
-                meta.setAttribute("http-equiv","Content-Security-Policy");
-                meta.setAttribute("content",options.setCSP);
-                document.head.appendChild(meta);
-            }  
             xhttp.open(options.method,options.url,options.async);
             xhttp.send(options.data);
           }
