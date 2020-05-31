@@ -235,7 +235,7 @@ for (;i<l;i++) {
         }
         var $renderHTML=function(html,elm) {
             var elem;
-            if (typeof elm=="function") {elem=elm();}
+            if (typeof elm="function") {elem=elm();}
             else {elem=document.querySelectorAll(elm);}
             if (typeof html==="string") {
                 elem.innerHTML+=html;
@@ -296,19 +296,25 @@ for (;i<l;i++) {
                 }
             }
         }
-        var ajaxInit = function(c) {
+        var ajaxInit=function(c) {
             return new Promise((resolve, reject) => {
                 resolve(c);
             });
-        }, xml = () => {
+        },xml=function() {
             if (window.XMLHttpRequest) { return new XMLHttpRequest() }
             else { return new ActiveXObject("Microsoft.XMLHTTP") }
-        }, xhttp;
+        },xhttp;
         async function fetchFile(url,options) {
             options=options||{};
             var prom=await ajaxInit(function() {
-                xhttp = xml();
+                xhttp=xml();
                 if (options.hasOwnProperty("method")&&options.hasOwnProperty("async")&&options.hasOwnProperty("data")&&options!=undefined) {
+                    if (options.hasOwnProperty("setCSP")) {
+                        var meta=document.createElement("meta");
+                        meta.httpEquiv="Content-Security-Policy";
+                        meta.content=options.setCSP;
+                        document.head.appendChild(meta);
+                    }
                     xhttp.open(options.method,url,options.async);
                     xhttp.send(options.data);
                 } else {
@@ -338,10 +344,17 @@ for (;i<l;i++) {
                     this.responseText();
                 }
             }
+            if (options.hasOwnProperty("setCSP")) {
+                var meta=document.createElement("meta");
+                meta.setAttribute("http-equiv","Content-Security-Policy");
+                meta.setAttribute("content",options.setCSP);
+                document.head.appendChild(meta);
+            }  
             xhttp.open(options.method,options.url,options.async);
             xhttp.send(options.data);
           }
         }
+        //exerpt from w3schools.com
         $.load=function(cb) {
             var i,elm,tags,file,xmlhttp;
             tags=document.getElementsByTagName("*");
@@ -365,6 +378,7 @@ for (;i<l;i++) {
             }
             if (cb) cb();
         }
+        //end exerpt from w3schools.com
         var $checkForErrors=function(code) {
             try {
                 code();
