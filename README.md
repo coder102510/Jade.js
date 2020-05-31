@@ -92,6 +92,25 @@ $.ajax({
 })
 ```
 The first function is the success code and the second function is the error code. The syntax is simillar to JQuery.ajax({}). Also, to access the XMLHttpRequest properties, you use the variable ```xhttp```.
+You could use both of these methods to just set the Content-Security-Policy like so:
+```javascript
+fetchFile(" ", {
+  method: "",
+  async: undefined,
+  data: " ",
+  setCSP: "script-src 'self' https://apis.google.com"
+}).then(() => { console.log(" ") })
+.catch(() => { console.log(" ") });
+$.ajax({
+  url: " ",
+  method:" ",
+  async : undefined,
+  data: " ",
+  setCSP: "script-src 'self' https://apis.google.com"
+});
+```
+Warning: The "setCSP" property creates a new meta tag each time you use the property!
+
 Another AJAX method is this:
 ```html
 <html>
