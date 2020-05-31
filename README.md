@@ -1,5 +1,5 @@
 # Jade.js
-Warning: Minified version is not going to be updated any more and is hard to understand and use. Also, this js library is untested.
+Warning: The minified version may be hard to understand and use. Also, this js library is untested.
 #
 #
 # INTRODUCTION TO JADE.JS
