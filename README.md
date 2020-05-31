@@ -69,15 +69,15 @@ sel.finish();
 #
 AJAX: 
 ```javascript
-$.ajax("demofile.txt", {
+fetchFile("demofile.txt", {
   method:"get",
   async:true
-}).then()a
-.catch();
+}).then(() => { document.write("Success!") })
+.catch(() => { document.write("Failure!") });
 ```
-This is simillar to the Fetch API, in fact, the function $.ajax returns a fetch request! Here is another AJAX example if you are not familliar with the fetch api:
+This code supports the Promise API. If you are not familliar with the Promise API, use this:
 ```javascript
-ajax.ajax({
+$.ajax({
   url:"demofile.txt",
   method:"get",
   async:true,
@@ -154,12 +154,31 @@ $checkForErrors(() => {
       import "Jade" from "Jade.js";
       $checkForErrors(() => {
         var body = $("body");
-        var event = new SelectAndExexcute(body, "click", () => {
-          $renderHTML("<h1>Jadejs.org</h1>", body);
+        var event = new SelectAndExexcute(body, "load", () => {
+          $renderHTML("<h1>Jade.JS</h1>", body);
           $style(body, "font-size", function() {
             return Math.random * 360 + 90 + "%";
           });
+          var h2 = $makeElement("h2");
+          $renderHTML("A JS Library to modify the DOM.", h2);
+          appendNode(h2);
+          var h2event = new SelectAndExecute(h2, {
+            events: [
+              "click",
+              "mouseover"
+            ],
+            functions: [
+              () => {
+                window.location.href = "https://github.com/coder102510/Jade.js/";
+              },
+              () => {
+                var p = $makeElement("p");
+                $renderHTML("Jade JS is a JS library meant to modify the DOM, along with other features. <br> It can do: AJAX,                 JSON/XML parsing and stringifying, and more!");
+              }
+            ]
+          });
         });
+        event.finish();
       });
     </script>
   </body>
