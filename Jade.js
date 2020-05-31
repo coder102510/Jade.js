@@ -296,17 +296,30 @@ for (;i<l;i++) {
                 }
             }
         }
-        var $={};
-        $.ajax=async function(url,options=undefined) {
-            if (options===undefined) {
-                console.warn("Securities cannot be enabled if options is not defined.")
-            } else {
-                options=options||{};
-            }
-            return await fetch(url,options)
+        var ajaxInit = function(c) {
+            return new Promise((resolve, reject) => {
+                resolve(c);
+            });
+        }, xml = () => {
+            if (window.XMLHttpRequest) { return new XMLHttpRequest() }
+            else { return new ActiveXObject("Microsoft.XMLHTTP") }
+        }, xhttp;
+        async function fetchFile(url,options) => {
+            options=options||{};
+            var prom=await ajaxInit(function() {
+                xhttp = xml();
+                if (options.hasOwnProperty("method")&&options.hasOwnProperty("async")&&options.hasOwnProperty("data")&&options!=undefined) {
+                    xhttp.open(options.method,url,options.async);
+                    xhttp.send(options.data);
+                } else {
+                    throw "You have the wrong properties or the options parameter is not defined.";
+                }
+            });
+            c();
+            return prom;
         }
-        var xhttp,ajax={};
-        ajax.ajax=function(url, options) {
+        var $={};
+        $.ajax=function(url, options) {
           if (typeof url==="object") {
             options=url;
             url=undefined;
